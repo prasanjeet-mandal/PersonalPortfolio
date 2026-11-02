@@ -1,0 +1,182 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// 1. Admin model for dashboard authentication
+model Admin {
+  id             String    @id @default(uuid())
+  email          String    @unique
+  passwordHash   String    @map("password_hash")
+  name           String    @default("Prasanjeet Kumar Mandal")
+  failedAttempts Int       @default(0) @map("failed_attempts")
+  lockUntil      DateTime? @map("lock_until")
+  lastLoginAt    DateTime? @map("last_login_at")
+  lastLoginIp    String?   @map("last_login_ip")
+  tokenVersion   Int       @default(1) @map("token_version")
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+
+  @@map("admins")
+}
+
+// 2. Projects model
+model Project {
+  id             String              @id @default(uuid())
+  slug           String              @unique
+  title          String
+  category       String
+  filterCategory String              @default("Full-Stack") @map("filter_category")
+  tagline        String              @db.Text
+  summary        String              @db.Text
+  featured       Boolean             @default(false)
+  badge          String?
+  architecture   String?             @db.Text
+  githubUrl      String?             @map("github_url")
+  liveUrl        String?             @map("live_url")
+  coverImage     String?             @map("cover_image")
+  statusNote     String?             @map("status_note") @db.Text
+  orderIndex     Int                 @default(0) @map("order_index")
+  createdAt      DateTime            @default(now()) @map("created_at")
+  updatedAt      DateTime            @updatedAt @map("updated_at")
+
+  technologies   ProjectTechnology[]
+  features       ProjectFeature[]
+
+  @@map("projects")
+}
+
+// 3. Project Technologies (Normalized Relationship)
+model ProjectTechnology {
+  id        String   @id @default(uuid())
+  projectId String   @map("project_id")
+  name      String
+
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
+  @@map("project_technologies")
+}
+
+// Key feature breakdown for projects
+model ProjectFeature {
+  id        String   @id @default(uuid())
+  projectId String   @map("project_id")
+  feature   String   @db.Text
+
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
+  @@map("project_features")
+}
+
+// 4. Skills model
+model Skill {
+  id         String   @id @default(uuid())
+  category   String   // Frontend, Backend, Programming, Database, AI / ML, Tools & Technologies
+  name       String
+  level      String   // Advanced, Proficient, Intermediate
+  rating     Int      @default(80)
+  icon       String?
+  orderIndex Int      @default(0) @map("order_index")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  @@index([category])
+  @@map("skills")
+}
+
+// 5. Education model
+model Education {
+  id           String    @id @default(uuid())
+  degree       String
+  institution  String
+  location     String
+  duration     String
+  status       String
+  description  String?   @db.Text
+  highlights   String?   @db.Text // JSON or newline separated highlights
+  orderIndex   Int       @default(0) @map("order_index")
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  @@map("education")
+}
+
+// 6. Achievements model
+model Achievement {
+  id           String    @id @default(uuid())
+  title        String
+  organization String
+  association  String?
+  date         String
+  badge        String?
+  type         String    @default("Hackathon")
+  description  String    @db.Text
+  highlights   String?   @db.Text
+  orderIndex   Int       @default(0) @map("order_index")
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  @@map("achievements")
+}
+
+// 7. Experiences model
+model Experience {
+  id           String    @id @default(uuid())
+  title        String
+  company      String
+  location     String
+  duration     String
+  type         String    @default("Internship")
+  description  String    @db.Text
+  highlights   String?   @db.Text
+  orderIndex   Int       @default(0) @map("order_index")
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  @@map("experiences")
+}
+
+// 8. Social Links
+model SocialLink {
+  id        String   @id @default(uuid())
+  platform  String   @unique
+  url       String
+  icon      String?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("social_links")
+}
+
+// 9. Contact Messages model
+model ContactMessage {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  subject   String
+  message   String   @db.Text
+  isRead    Boolean  @default(false) @map("is_read")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([createdAt])
+  @@map("contact_messages")
+}
+
+// 10. Resume model
+model Resume {
+  id         String   @id @default(uuid())
+  fileName   String   @map("file_name")
+  filePath   String   @map("file_path")
+  fileSize   Int      @map("file_size")
+  version    String   @default("1.0")
+  isActive   Boolean  @default(true) @map("is_active")
+  uploadedAt DateTime @default(now()) @map("uploaded_at")
+
+  @@map("resumes")
+}

@@ -70,8 +70,8 @@ export default function Hero() {
                   alt="Prasanjeet Kumar Mandal"
                   className="w-full h-auto object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.95)] filter contrast-[1.02]"
                   onError={(e) => {
-                    // Graceful fallback
-                    e.currentTarget.src = '/images/profile_original.jpg';
+                    // Graceful fallback to navy suit avatar
+                    e.currentTarget.src = '/images/hero_avatar.png';
                   }}
                 />
               </div>

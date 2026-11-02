@@ -1,12 +1,18 @@
 {
   "name": "prasanjeet-mandal-portfolio",
   "version": "1.0.0",
-  "description": "Personal Portfolio Website for Prasanjeet Kumar Mandal",
+  "description": "Production Full-Stack Personal Portfolio Website & Management System for Prasanjeet Kumar Mandal",
   "private": true,
   "scripts": {
     "dev": "npm run dev --prefix client",
+    "dev:server": "npm run dev --prefix server",
     "build": "npm run build --prefix client",
-    "preview": "npm run preview --prefix client"
+    "preview": "npm run preview --prefix client",
+    "db:generate": "npm run prisma:generate --prefix server",
+    "db:migrate": "npm run prisma:migrate --prefix server",
+    "db:push": "npm run prisma:push --prefix server",
+    "db:seed": "npm run prisma:seed --prefix server",
+    "db:studio": "npm run prisma:studio --prefix server"
   },
   "keywords": [
     "portfolio",
@@ -14,6 +20,9 @@
     "vite",
     "tailwindcss",
     "full-stack",
+    "express",
+    "prisma",
+    "mysql",
     "ai-ml"
   ],
   "author": "Prasanjeet Kumar Mandal",

@@ -1,164 +1,154 @@
-# Personal Portfolio Website — Prasanjeet Kumar Mandal
+# Personal Portfolio Website & Full-Stack Management System
+### Prasanjeet Kumar Mandal
 
 > **Aspiring Software Developer | AI/ML Enthusiast | Full-Stack Developer**  
-> BTech in Computer Science and Engineering (Semester 4) at Quantum University, Roorkee, Uttarakhand.
+> BTech in Computer Science and Engineering (2025–2028), Quantum University, Roorkee  
+> Diploma in Computer Science and Engineering (2021–2024), Jharkhand University of Technology (JUT), Ranchi
 
 ---
 
-## 🎨 Design Philosophy & Figma Faithfulness
-
-This portfolio is built following the design reference from the provided Figma template:
-- **Visual Identity**: Modern obsidian dark mode (`#0B0A0F`, `#121118`) accented with deep purple/violet glows (`#8B5CF6`, `#6366F1`) and crisp typography (`Plus Jakarta Sans`).
-- **Dynamic Header Greeting**: Adapts dynamically according to the visitor's local time (`Good Morning, Visitor`, `Good Afternoon, Visitor`, `Good Evening, Visitor`).
-- **Hero Orbit Lens**: Glassmorphic frosted backdrop sphere with orbital floating badges representing AI/ML (Brain), UI/UX (Palette), Collaboration (Message), and Full-Stack Engineering (Code), paired with an interactive 3D-styled avatar.
-- **Typewriter Role Animator**: Smooth typing animation showcasing key identities.
-- **Micro-Interactions**: Glassmorphism cards with fine 1px translucent borders, hover elevations, and responsive navigation.
-
----
-
-## 📂 Project Architecture
+## 🏗️ Complete Full-Stack Architecture
 
 ```
 d:/MandalPortfolio/
-├── client/
+├── client/                                    # Frontend (React 19 + Vite + Tailwind CSS v4)
 │   ├── public/
 │   │   ├── images/
-│   │   │   ├── avatar.png
-│   │   │   └── projects/
-│   │   │       ├── agrosphere-cover.svg
-│   │   │       ├── agrolink-cover.svg
-│   │   │       ├── cert-cover.svg
-│   │   │       ├── research-cover.svg
-│   │   │       ├── vpn-cover.svg
-│   │   │       ├── inventory-cover.svg
-│   │   │       ├── scraper-cover.svg
-│   │   │       ├── cloud-cover.svg
-│   │   │       └── iot-cover.svg
+│   │   │   ├── avatar.png                     # Master 3-piece tailored suit hero visual
+│   │   │   └── projects/                      # High-res SVG vector covers (9 projects)
 │   │   └── resume/
 │   │       └── Prasanjeet_Kumar_Mandal_Resume.pdf
 │   ├── src/
-│   │   ├── assets/
 │   │   ├── components/
-│   │   │   ├── common/
-│   │   │   │   ├── ResumeSection.jsx
-│   │   │   │   └── SocialIcons.jsx
-│   │   │   ├── layout/
-│   │   │   │   ├── Navbar.jsx
-│   │   │   │   └── Footer.jsx
-│   │   │   ├── home/
-│   │   │   │   └── Hero.jsx
-│   │   │   ├── about/
-│   │   │   │   ├── About.jsx
-│   │   │   │   └── Education.jsx
-│   │   │   ├── skills/
-│   │   │   │   └── Skills.jsx
-│   │   │   ├── projects/
-│   │   │   │   ├── Projects.jsx
-│   │   │   │   ├── ProjectCard.jsx
-│   │   │   │   └── ProjectDetailModal.jsx
-│   │   │   ├── achievements/
-│   │   │   │   └── Achievements.jsx
-│   │   │   └── contact/
-│   │   │       └── Contact.jsx
+│   │   │   ├── common/                        # ResumeSection.jsx, SocialIcons.jsx
+│   │   │   ├── layout/                        # Navbar.jsx, Footer.jsx
+│   │   │   ├── home/                          # Hero.jsx (Orbit lens & tailored portrait)
+│   │   │   ├── about/                         # About.jsx, Education.jsx
+│   │   │   ├── skills/                        # Skills.jsx (Categorized competencies)
+│   │   │   ├── projects/                      # Projects.jsx, ProjectCard.jsx, Modal.jsx
+│   │   │   ├── achievements/                  # Achievements.jsx (Timeline)
+│   │   │   └── contact/                       # Contact.jsx (Validated form)
 │   │   ├── services/
-│   │   │   └── api.js
+│   │   │   └── api.js                         # Centralized REST API client
 │   │   ├── utils/
-│   │   │   ├── helpers.js
-│   │   │   └── portfolioData.js
+│   │   │   ├── helpers.js                     # Greeting & smooth-scrolling utils
+│   │   │   └── portfolioData.js               # Verified profile data
 │   │   ├── App.jsx
 │   │   ├── main.jsx
 │   │   └── index.css
+│   ├── .env
 │   ├── .env.example
 │   ├── package.json
 │   └── vite.config.js
-├── package.json
+│
+├── server/                                    # Backend (Node.js + Express + Prisma ORM)
+│   ├── prisma/
+│   │   ├── schema.prisma                      # 10 Normalized MySQL tables
+│   │   └── seed.js                            # Complete initial portfolio seed script
+│   ├── src/
+│   │   ├── config/
+│   │   │   └── database.js                    # Prisma client connection manager
+│   │   ├── controllers/                       # REST endpoint business logic
+│   │   │   ├── authController.js              # Admin JWT login & session
+│   │   │   ├── projectController.js           # CRUD for projects & technologies
+│   │   │   ├── skillController.js             # Categorized skills manager
+│   │   │   ├── educationController.js         # BTech & Diploma history
+│   │   │   ├── achievementController.js       # Hackathons & conferences
+│   │   │   ├── experienceController.js        # Cognifyz Technologies internship
+│   │   │   ├── resumeController.js            # PDF upload & download handler
+│   │   │   └── contactController.js           # Submissions, email notifications & DB storage
+│   │   ├── middleware/
+│   │   │   ├── authMiddleware.js              # JWT Bearer verification
+│   │   │   ├── errorHandler.js                # Centralized exception handler
+│   │   │   ├── rateLimiter.js                 # Anti-spam & brute-force defense
+│   │   │   └── uploadMiddleware.js            # Multer storage for images & PDF
+│   │   ├── routes/                            # Modular Express router endpoints
+│   │   │   ├── authRoutes.js
+│   │   │   ├── projectRoutes.js
+│   │   │   ├── skillRoutes.js
+│   │   │   ├── educationRoutes.js
+│   │   │   ├── achievementRoutes.js
+│   │   │   ├── experienceRoutes.js
+│   │   │   ├── contactRoutes.js
+│   │   │   ├── resumeRoutes.js
+│   │   │   └── apiRoutes.js                   # Unified /api hub
+│   │   ├── services/
+│   │   │   └── emailService.js                # Nodemailer notification delivery
+│   │   ├── utils/
+│   │   │   └── jwtHelper.js                   # Token generation & verification
+│   │   ├── validators/
+│   │   │   └── schemas.js                     # Zod input validation schemas
+│   │   ├── app.js                             # Express application config (CORS, Helmet)
+│   │   └── server.js                          # Server startup listener
+│   ├── uploads/
+│   │   ├── projects/                          # Uploaded project images
+│   │   └── resume/                            # Uploaded PDF resumes
+│   ├── .env
+│   ├── .env.example
+│   └── package.json
+│
+├── package.json                               # Root workspace scripts
 └── README.md
 ```
 
 ---
 
-## 🚀 Phase 1 Implementation Summary
+## 🗄️ Database Design (MySQL 8.0 & Prisma)
 
-All Phase 1 requirements have been completed and verified:
+The database schema (`server/prisma/schema.prisma`) implements **10 normalized tables**:
 
-1. **Hero Section**:
-   - Dynamic time-of-day greeting in the top header.
-   - Glassmorphism orbit circle with floating AI/Design/Code badges.
-   - 3D-styled avatar portrait.
-   - Live typewriter effect for roles.
-   - CTAs: "Explore Projects", "Contact Me", and "Download Resume".
-   - Verified social links: GitHub, LinkedIn, and Email.
-
-2. **About Me**:
-   - Educational overview (Semester 4 BTech Computer Science and Engineering, Quantum University).
-   - Problem-solving approach and technical interests.
-   - Four highlight cards and university summary card.
-
-3. **Technical Skills**:
-   - Realistic proficiency levels across 6 categories (Frontend, Backend, Programming, Database, AI/ML, Tools).
-   - Live category filtering and interactive search.
-   - Visual progress indicators.
-
-4. **Projects Showcase**:
-   - **AgroSphere**: AI-powered smart agriculture platform (Buildathon 2026).
-   - **AgroLink**: Direct farm marketplace (Presented at UCOST 21st Conference).
-   - **Fake Certificate Detection System**: OCR and NLP document verification.
-   - Verified exploratory/research projects (AI-SecureDocVerify, VPN Anomaly Detection, Inventory Management, etc.).
-   - Interactive "View Details" modal with deep-dive architectural specifications.
-   - Filterable by tags and searchable by keyword.
-
-5. **Achievements & Experience Timeline**:
-   - Timeline layout for UCOST 21st Conference, Buildathon 2026, and Smart India Hackathon 2026.
-   - Dates, badges, organizers, and verified factual highlights.
-
-6. **Education**:
-   - Dedicated Quantum University BTech AIML section with coursework breakdown.
-
-7. **Resume**:
-   - Downloadable PDF (`Prasanjeet_Kumar_Mandal_Resume.pdf`).
-   - In-app preview toggle.
-
-8. **Contact Form**:
-   - Full validation for Name, Email, Subject, and Message.
-   - Reactive status alert feedback.
-   - Direct mail and verified profile links.
-
-9. **Footer**:
-   - Tagline, quick links, social profiles, and smooth back-to-top button.
+1. **`admins`**: Secure credential storage with bcrypt hashing and JWT session management.
+2. **`projects`**: Dynamic showcase entries with slugs, category filtering, taglines, and status badges.
+3. **`project_technologies`**: Normalized `1-to-N` relation linking projects to individual tech tags.
+4. **`project_features`**: Normalized `1-to-N` relation storing structured feature lists for deep-dive modals.
+5. **`skills`**: Categorized competencies across *Frontend*, *Backend*, *Programming*, *Database*, *AI / ML*, and *Tools*.
+6. **`education`**: Progressive academic history covering Quantum University and Jharkhand University of Technology (JUT).
+7. **`achievements`**: Verified records of Buildathon 2026, UCOST 21st Conference, and Smart India Hackathon.
+8. **`experiences`**: Professional internships (Cognifyz Technologies).
+9. **`social_links`**: Configurable profile connections (GitHub, LinkedIn, Email).
+10. **`contact_messages`**: Visitor inquiries with read status and anti-spam rate limiting.
+11. **`resumes`**: Active and historical uploaded CV documents with automatic file handling.
 
 ---
 
-## 💻 Development & Execution Commands
+## 🚀 Execution Commands (Windows & VS Code)
 
-### Prerequisites
-- Node.js (v18+ or v24+)
-- npm (v9+)
-
-### Running Frontend Locally (Windows / VS Code)
-```bash
+### 1. Running the Frontend
+```powershell
 # From root directory:
 npm run dev
 
-# Or directly from client/:
+# Or from client directory:
 cd client
 npm run dev
 ```
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+> Access at: **http://localhost:5173**
 
-### Building for Production
-```bash
-npm run build
+### 2. Running the Backend REST API
+```powershell
+# From root directory:
+npm run dev:server
+
+# Or from server directory:
+cd server
+npm run dev
 ```
-The production bundle will be generated in `client/dist/`.
+> Access at: **http://localhost:5000** (Health check: `http://localhost:5000/api/health`)
+
+### 3. Database Operations (Prisma & MySQL)
+```powershell
+# Push schema to local MySQL:
+npm run db:push
+
+# Run seed script (inserts Prasanjeet's verified projects, education, skills, and admin account):
+npm run db:seed
+
+# Open interactive Prisma Database Studio GUI:
+npm run db:studio
+```
 
 ---
 
-## ⏭️ Next Step: Phase 2 (Backend Development)
-As instructed:
-> **IMPORTANT: Do not start backend development until the frontend has been implemented and reviewed. Do not skip phases.**
-
-Once you review and approve this Phase 1 frontend implementation, we will proceed to:
-- **Phase 2**: Node.js & Express REST API with JWT authentication, file uploads, and Nodemailer.
-- **Phase 3**: MySQL normalized database schema & Prisma migrations.
-- **Phase 4**: Full frontend-backend API integration.
-- **Phase 5**: Secure Admin Dashboard.
+## 🔑 Default Admin Account (Seeded)
+- **Email**: `jvm.prasanjeet@gmail.com`
+- **Default Password**: `Admin@12345` *(Configurable in `server/.env`)*

@@ -1,0 +1,147 @@
+%PDF-1.4
+1 0 obj
+<<
+  /Type /Catalog
+  /Pages 2 0 R
+>>
+endobj
+2 0 obj
+<<
+  /Type /Pages
+  /Kids [3 0 R]
+  /Count 1
+>>
+endobj
+3 0 obj
+<<
+  /Type /Page
+  /Parent 2 0 R
+  /MediaBox [0 0 595 842]
+  /Contents 4 0 R
+  /Resources <<
+    /Font <<
+      /F1 5 0 R
+      /F2 6 0 R
+    >>
+  >>
+>>
+endobj
+5 0 obj
+<<
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Helvetica-Bold
+>>
+endobj
+6 0 obj
+<<
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Helvetica
+>>
+endobj
+4 0 obj
+<< /Length 1300 >>
+stream
+BT
+/F1 20 Tf
+50 790 Td
+(PRASANJEET KUMAR MANDAL) Tj
+/F2 9 Tf
+0 -18 Td
+(Roorkee, Uttarakhand, India | jvm.prasanjeet@gmail.com | linkedin.com/in/prasanjeetmandal09 | github.com/prasanjeet-mandal) Tj
+/F1 11 Tf
+0 -26 Td
+(OBJECTIVE) Tj
+/F2 8.5 Tf
+0 -14 Td
+(Motivated Java Developer and DevOps enthusiast seeking a Software Development Engineer (SDE) internship to leverage) Tj
+0 -12 Td
+(hands-on experience building scalable, full-stack web applications using Core Java, JSP, NLP, OCR, AWS, and Maven.) Tj
+/F1 11 Tf
+0 -24 Td
+(EDUCATION) Tj
+/F1 9.5 Tf
+0 -15 Td
+(Quantum University - Bachelor of Technology, Computer Science and Engineering) Tj
+/F2 8.5 Tf
+350 0 Td
+(July 2025 - July 2028) Tj
+-350 -13 Td
+(- Advanced coursework: Data Structures and Algorithms, Operating Systems, DBMS, and Cloud Computing.) Tj
+0 -12 Td
+(- Actively participating in technical clubs and coding competitions to strengthen problem-solving skills.) Tj
+/F1 9.5 Tf
+0 -16 Td
+(Jharkhand University of Technology (JUT) - Diploma, Computer Science and Engineering) Tj
+/F2 8.5 Tf
+350 0 Td
+(July 2021 - July 2024) Tj
+-350 -13 Td
+(- Completed core modules in Java Programming, Web Technologies, Relational Databases, and Networking.) Tj
+0 -12 Td
+(- Developed multiple academic projects applying full-stack development techniques.) Tj
+/F1 11 Tf
+0 -24 Td
+(EXPERIENCE) Tj
+/F1 9.5 Tf
+0 -15 Td
+(Cognifyz Technologies - Software Development Intern (Remote)) Tj
+/F2 8.5 Tf
+350 0 Td
+(September 2025) Tj
+-350 -13 Td
+(- Contributed to real-world Java application development tasks within a professional software team using SDLC practices.) Tj
+0 -12 Td
+(- Applied Core Java to build and unit-test functional components; participated in peer code reviews and Git workflows.) Tj
+/F1 11 Tf
+0 -24 Td
+(PROJECTS) Tj
+/F1 9.5 Tf
+0 -15 Td
+(Fake Certificate Detection System | Java, JavaScript, HTML, CSS, NLP, OCR, PostgreSQL) Tj
+/F2 8.5 Tf
+0 -13 Td
+(- Architected certificate verification platform using Tesseract OCR and NLP pipeline to detect forgery patterns.) Tj
+/F1 9.5 Tf
+0 -16 Td
+(Tours and Travel Management System | Java, JSP, HTML, CSS, JavaScript) Tj
+/F2 8.5 Tf
+0 -13 Td
+(- Developed full-stack travel platform for package listings, bookings, and admin controls with JDBC and JSP.) Tj
+/F1 9.5 Tf
+0 -16 Td
+(AgroSphere & AgroLink | React, Spring Boot, Java, Python, FastAPI, MySQL) Tj
+/F2 8.5 Tf
+0 -13 Td
+(- Presented AgroSphere at Buildathon 2026; demonstrated AgroLink marketplace at UCOST 21st Conference exhibition.) Tj
+/F1 11 Tf
+0 -24 Td
+(TECHNICAL SKILLS) Tj
+/F2 8.5 Tf
+0 -14 Td
+(Languages: Java (Core & Advanced), JavaScript (ES6+), Python, SQL, HTML5, CSS3) Tj
+0 -12 Td
+(Frameworks & DB: JSP, JDBC, Maven, Spring Boot, React, Node.js, PostgreSQL, MySQL) Tj
+0 -12 Td
+(Cloud, Tools & Concepts: AWS (EC2, S3), Docker, Git, Linux, Tesseract OCR, NLP, OOP, DSA, REST API Design) Tj
+ET
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000371 00000 n 
+0000000257 00000 n 
+0000000314 00000 n 
+trailer
+<<
+  /Size 7
+  /Root 1 0 R
+>>
+startxref
+1720
+%%EOF

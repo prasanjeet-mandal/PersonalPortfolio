@@ -1,0 +1,21 @@
+{
+  "name": "prasanjeet-mandal-portfolio",
+  "version": "1.0.0",
+  "description": "Personal Portfolio Website for Prasanjeet Kumar Mandal",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix client",
+    "build": "npm run build --prefix client",
+    "preview": "npm run preview --prefix client"
+  },
+  "keywords": [
+    "portfolio",
+    "react",
+    "vite",
+    "tailwindcss",
+    "full-stack",
+    "ai-ml"
+  ],
+  "author": "Prasanjeet Kumar Mandal",
+  "license": "MIT"
+}

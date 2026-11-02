@@ -149,6 +149,3 @@ npm run db:studio
 
 ---
 
-## 🔑 Default Admin Account (Seeded)
-- **Email**: `jvm.prasanjeet@gmail.com`
-- **Default Password**: `Admin@12345` *(Configurable in `server/.env`)*

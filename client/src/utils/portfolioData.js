@@ -127,7 +127,7 @@ export const projectsData = [
     architecture: "Microservices design combining a responsive React SPA, Spring Boot business backend, Python FastAPI inference engine, and MySQL transactional storage.",
     links: {
       github: "https://github.com/prasanjeet-mandal/AgroSphere",
-      live: "https://agrosphere.demo.local"
+      live: "https://agro-sphere-three.vercel.app/"
     },
     images: {
       cover: "/images/projects/agrosphere-cover.svg"

@@ -1,32 +1,105 @@
-# Dependencies
-node_modules/
+# ==============================================================================
+# SECURE REPOSITORY IGNORE CONFIGURATION
+# Protects sensitive credentials, environment secrets, build assets, and caches.
+# ==============================================================================
 
-# Environment variables
+# 1. SENSITIVE CREDENTIALS & ENVIRONMENT SECRETS (NEVER COMMIT)
 .env
-.env.local
-.env.development
-.env.production
+.env.*
+*.env
+*.env.local
+*.env.development
+*.env.test
+*.env.production
+*.env.staging
+client/.env
+client/.env.*
+server/.env
+server/.env.*
 
-# Build files
+# Private Keys, Certificates & Tokens
+*.pem
+*.key
+*.cert
+*.crt
+*.pfx
+*.p12
+*.jks
+*.keystore
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+credentials.json
+client_secret*.json
+service-account*.json
+google-services.json
+
+# 2. RUNTIME DEPENDENCIES & PACKAGE CACHES
+node_modules/
+*/node_modules/
+.pnpm-store/
+.npm
+.yarn
+package-lock.json
+
+# 3. PRODUCTION BUILDS & INTERMEDIATE ARTIFACTS
 dist/
+*/dist/
+dist-ssr/
 build/
-
-# Logs
-npm-debug.log*
-yarn-debug.log*
-*.log
-
-# IDE files
-.vscode/
-.idea/
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Cache
+*/build/
+.next/
+out/
+.turbo/
 .cache/
 coverage/
 
-# Ai generated files
-.claude
+# 4. DATABASE FILES & SERVER UPLOADS
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.db-wal
+server/uploads/
+uploads/
+*.sql.gz
+*.sql.dump
+
+# 5. LOGS & DIAGNOSTICS
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# 6. OPERATING SYSTEM ARTIFACTS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# 7. IDE & EDITOR DIRECTORIES
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 8. AI WORKSPACE & SCRATCH METADATA
+.claude/
+.gemini/
+.cursor/
+.windsurf/
+scratch/

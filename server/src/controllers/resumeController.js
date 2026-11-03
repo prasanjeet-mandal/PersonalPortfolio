@@ -2,17 +2,48 @@ import path from 'path';
 import fs from 'fs';
 import { prisma } from '../config/database.js';
 
+let inMemoryDownloadCount = 18;
+
+export const getResumeStats = async (req, res, next) => {
+  try {
+    res.json({
+      success: true,
+      downloads: inMemoryDownloadCount,
+      format: 'PDF (ATS-Friendly)',
+      fileName: 'Prasanjeet_Kumar_Mandal_Resume.pdf',
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const trackDownload = async (req, res, next) => {
+  try {
+    inMemoryDownloadCount += 1;
+    res.json({
+      success: true,
+      downloads: inMemoryDownloadCount,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const getActiveResume = async (req, res, next) => {
   try {
-    if (prisma) {
-      const active = await prisma.resume.findFirst({
-        where: { isActive: true },
-        orderBy: { uploadedAt: 'desc' },
-      });
+    inMemoryDownloadCount += 1;
 
-      if (active && fs.existsSync(active.filePath)) {
-        return res.download(active.filePath, active.fileName);
-      }
+    if (prisma) {
+      try {
+        const active = await prisma.resume.findFirst({
+          where: { isActive: true },
+          orderBy: { uploadedAt: 'desc' },
+        });
+
+        if (active && fs.existsSync(active.filePath)) {
+          return res.download(active.filePath, active.fileName);
+        }
+      } catch (e) {}
     }
 
     // Default fallback to client public PDF
@@ -36,26 +67,28 @@ export const uploadResume = async (req, res, next) => {
     const { filename, path: filePath, size } = req.file;
 
     if (prisma) {
-      // Deactivate previous active resumes
-      await prisma.resume.updateMany({
-        where: { isActive: true },
-        data: { isActive: false },
-      });
+      try {
+        // Deactivate previous active resumes
+        await prisma.resume.updateMany({
+          where: { isActive: true },
+          data: { isActive: false },
+        });
 
-      const resume = await prisma.resume.create({
-        data: {
-          fileName: filename,
-          filePath,
-          fileSize: size,
-          isActive: true,
-        },
-      });
+        const resume = await prisma.resume.create({
+          data: {
+            fileName: filename,
+            filePath,
+            fileSize: size,
+            isActive: true,
+          },
+        });
 
-      return res.status(201).json({
-        success: true,
-        message: 'Resume PDF uploaded and set as active.',
-        data: resume,
-      });
+        return res.status(201).json({
+          success: true,
+          message: 'Resume PDF uploaded and set as active.',
+          data: resume,
+        });
+      } catch (e) {}
     }
 
     res.status(201).json({

@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { Sparkles, Layers, Search, Filter } from 'lucide-react';
-import { projectsData } from '../../utils/portfolioData';
+import { useProjects } from '../../hooks/usePortfolioData';
 import ProjectCard from './ProjectCard';
 import ProjectDetailModal from './ProjectDetailModal';
 
 export default function Projects() {
+  const { data: projects } = useProjects();
   const [selectedFilter, setSelectedFilter] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
   const [activeModalProject, setActiveModalProject] = useState(null);
 
   const filters = ['All', 'AI / ML', 'Full-Stack', 'Research', 'Tools'];
 
-  const filteredProjects = projectsData.filter((project) => {
+  const filteredProjects = projects.filter((project) => {
     // Filter by category
     if (selectedFilter !== 'All' && project.filterCategory !== selectedFilter) {
       return false;

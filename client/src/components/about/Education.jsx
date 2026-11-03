@@ -1,8 +1,9 @@
 import React from 'react';
 import { GraduationCap, Sparkles, BookOpen, Calendar, MapPin, Award, CheckCircle2 } from 'lucide-react';
-import { educationData } from '../../utils/portfolioData';
+import { useEducation } from '../../hooks/usePortfolioData';
 
 export default function Education() {
+  const { data: educationList } = useEducation();
   const coursework = [
     "Data Structures & Algorithms",
     "Object-Oriented Programming (Java)",
@@ -42,7 +43,7 @@ export default function Education() {
             
             {/* Left: Degrees Timeline */}
             <div className="lg:col-span-7 space-y-6">
-              {educationData.map((edu, idx) => (
+              {educationList.map((edu, idx) => (
                 <div
                   key={edu.id || idx}
                   className="glass-panel p-6 sm:p-8 rounded-3xl border border-white/[0.08] relative overflow-hidden space-y-4 hover:border-purple-500/40 transition-all group"

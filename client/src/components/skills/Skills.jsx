@@ -10,9 +10,10 @@ import {
   CheckCircle2,
   Search
 } from 'lucide-react';
-import { skillsData } from '../../utils/portfolioData';
+import { useSkills } from '../../hooks/usePortfolioData';
 
 export default function Skills() {
+  const { data: skillsList } = useSkills();
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -25,9 +26,9 @@ export default function Skills() {
     "Tools & Technologies": Wrench,
   };
 
-  const categories = ['All', ...skillsData.map(c => c.category)];
+  const categories = ['All', ...skillsList.map(c => c.category)];
 
-  const filteredCategories = skillsData.filter(cat => {
+  const filteredCategories = skillsList.filter(cat => {
     if (selectedCategory !== 'All' && cat.category !== selectedCategory) {
       return false;
     }

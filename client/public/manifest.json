@@ -1,0 +1,25 @@
+{
+  "name": "Prasanjeet Kumar Mandal | Developer Portfolio",
+  "short_name": "MandalPortfolio",
+  "description": "Portfolio of Prasanjeet Kumar Mandal - Software Developer & AI/ML Engineer",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0B0A0F",
+  "theme_color": "#0B0A0F",
+  "categories": ["portfolio", "education", "productivity"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/avatar.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

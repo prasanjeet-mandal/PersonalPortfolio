@@ -8,9 +8,11 @@ import {
   CheckCircle2, 
   ArrowUpRight 
 } from 'lucide-react';
-import { achievementsData } from '../../utils/portfolioData';
+import { useAchievements } from '../../hooks/usePortfolioData';
 
 export default function Achievements() {
+  const { data: achievements } = useAchievements();
+
   return (
     <section id="achievements" className="py-24 relative overflow-hidden bg-[#0C0B11]">
       {/* Background glow */}
@@ -39,7 +41,7 @@ export default function Achievements() {
           <div className="hidden sm:block absolute left-1/2 top-4 bottom-4 -translate-x-1/2 w-0.5 bg-gradient-to-b from-purple-500/50 via-indigo-500/30 to-purple-500/10" />
 
           <div className="space-y-12">
-            {achievementsData.map((item, idx) => {
+            {achievements.map((item, idx) => {
               const isEven = idx % 2 === 0;
               return (
                 <div

@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowUp, Mail, Heart, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowUp, Mail, Heart, Sparkles, Shield } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '../common/SocialIcons';
 import { personalInfo } from '../../utils/portfolioData';
 import { scrollToSection } from '../../utils/helpers';
@@ -122,10 +123,18 @@ export default function Footer() {
 
         </div>
 
-        {/* Bottom bar with Copyright and Back to Top */}
+        {/* Bottom bar with Copyright, Admin portal access, and Back to Top */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p className="flex items-center gap-1">
-            © {new Date().getFullYear()} Prasanjeet Kumar Mandal. Designed & engineered with precision.
+          <p className="flex items-center gap-1.5">
+            <span>© {new Date().getFullYear()} Prasanjeet Kumar Mandal. Designed & engineered with precision.</span>
+            <Link
+              to="/admin"
+              className="text-slate-600 hover:text-purple-400 p-1 rounded transition-colors inline-flex items-center"
+              title="Admin Portal"
+              aria-label="Admin Portal"
+            >
+              <Shield className="w-3.5 h-3.5" />
+            </Link>
           </p>
 
           <button

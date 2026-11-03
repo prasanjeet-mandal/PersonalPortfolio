@@ -1,50 +1,36 @@
 import React from 'react';
-import Navbar from './components/layout/Navbar';
-import Hero from './components/home/Hero';
-import About from './components/about/About';
-import Skills from './components/skills/Skills';
-import Projects from './components/projects/Projects';
-import Achievements from './components/achievements/Achievements';
-import Education from './components/about/Education';
-import ResumeSection from './components/common/ResumeSection';
-import Contact from './components/contact/Contact';
-import Footer from './components/layout/Footer';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import Home from './pages/home/Home';
+import AdminLogin from './pages/admin/AdminLogin';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import ProtectedRoute from './components/common/ProtectedRoute';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#0B0A0F] text-[#F1F5F9] selection:bg-purple-600 selection:text-white relative">
-      {/* Sticky frosted Navbar */}
-      <Navbar />
+    <BrowserRouter>
+      <AuthProvider>
+        <Routes>
+          {/* Public Portfolio Route */}
+          <Route path="/" element={<Home />} />
 
-      {/* Main Sections */}
-      <main>
-        {/* A. Hero Section with Figma frosted orbit avatar */}
-        <Hero />
+          {/* Admin Login Route */}
+          <Route path="/admin/login" element={<AdminLogin />} />
 
-        {/* B. About Me */}
-        <About />
+          {/* Protected Admin Console Routes */}
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
 
-        {/* C. Technical Skills */}
-        <Skills />
-
-        {/* D. Projects */}
-        <Projects />
-
-        {/* E. Achievements & Experiences (Timeline) */}
-        <Achievements />
-
-        {/* F. Education */}
-        <Education />
-
-        {/* G. Resume */}
-        <ResumeSection />
-
-        {/* H. Contact */}
-        <Contact />
-      </main>
-
-      {/* I. Footer */}
-      <Footer />
-    </div>
+          {/* Catch-all fallback */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }

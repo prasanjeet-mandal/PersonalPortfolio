@@ -49,15 +49,24 @@ export const portfolioApi = {
     try {
       const response = await fetch(`${API_BASE_URL}/contact`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
         body: JSON.stringify(payload)
       });
-      if (!response.ok) throw new Error('Submission failed');
-      return await response.json();
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message || 'Submission failed. Please try again.');
+      }
+      return data;
     } catch (err) {
-      // In Phase 1 frontend, resolve gracefully so UI flow can be verified
-      console.warn('Backend contact API unavailable in Phase 1 frontend preview:', err.message);
-      return { success: true, message: 'Message recorded successfully (mock mode).' };
+      // In standalone client preview when backend is not started
+      if (err.message.includes('Failed to fetch')) {
+        console.warn('Backend server offline during contact submission.');
+        return { success: true, message: 'Message recorded (dev mode).' };
+      }
+      throw err;
     }
   }
 };

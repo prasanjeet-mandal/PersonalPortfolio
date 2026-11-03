@@ -61,14 +61,23 @@ export default function Contact() {
     try {
       const res = await portfolioApi.sendContactMessage(formData);
       if (res && res.success !== false) {
-        setSubmitStatus('success');
+        setSubmitStatus({ 
+          type: 'success', 
+          message: res.message || 'Thank you! Your message has been received. I will reply as soon as possible.' 
+        });
         setFormData({ name: '', email: '', subject: '', message: '' });
-        setTimeout(() => setSubmitStatus(null), 6000);
+        setTimeout(() => setSubmitStatus(null), 8000);
       } else {
-        setSubmitStatus('error');
+        setSubmitStatus({ 
+          type: 'error', 
+          message: res?.message || 'Something went wrong while sending your message. Please email me directly.' 
+        });
       }
     } catch (err) {
-      setSubmitStatus('error');
+      setSubmitStatus({ 
+        type: 'error', 
+        message: err.message || 'Something went wrong while sending your message. Please email me directly.' 
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -190,17 +199,17 @@ export default function Contact() {
               </h3>
 
               {/* Status Alert */}
-              {submitStatus === 'success' && (
+              {submitStatus?.type === 'success' && (
                 <div className="mb-6 p-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center gap-3 text-emerald-200 text-xs sm:text-sm animate-fade-in">
                   <CheckCircle2 className="w-5 h-5 shrink-0 text-emerald-400" />
-                  <span>Thank you! Your message has been received. I will reply as soon as possible.</span>
+                  <span>{submitStatus.message}</span>
                 </div>
               )}
 
-              {submitStatus === 'error' && (
+              {submitStatus?.type === 'error' && (
                 <div className="mb-6 p-4 rounded-2xl bg-red-500/15 border border-red-500/30 flex items-center gap-3 text-red-200 text-xs sm:text-sm animate-fade-in">
                   <AlertCircle className="w-5 h-5 shrink-0 text-red-400" />
-                  <span>Something went wrong while sending your message. Please email me directly.</span>
+                  <span>{submitStatus.message}</span>
                 </div>
               )}
 

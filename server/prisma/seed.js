@@ -48,7 +48,7 @@ async function main() {
       badge: 'Featured Buildathon 2026',
       architecture: 'Microservices design combining a responsive React SPA, Spring Boot business backend, Python FastAPI inference engine, and MySQL transactional storage.',
       githubUrl: 'https://github.com/prasanjeet-mandal/AgroSphere',
-      liveUrl: 'https://agrosphere.demo.local',
+      liveUrl: 'https://agro-sphere-three.vercel.app/',
       coverImage: '/images/projects/agrosphere-cover.svg',
       orderIndex: 1,
       technologies: ['React', 'JavaScript', 'Spring Boot', 'Java', 'Python', 'FastAPI', 'MySQL', 'Scikit-learn', 'OR-Tools'],
